@@ -7,13 +7,13 @@ import {
 } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Layout from "./components/Layout";
-import Landing from "./pages/Landing";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
+import Landing from "./pages/User/Landing";
+import Register from "./pages/User/Register";
+import Login from "./pages/User/Login";
+import Dashboard from "./pages/User/Dashboard";
+import NotFound from "./pages/User/NotFound";
 import PageWrapper from "./components/PageWrapper";
-import AdharAuthentication from "./pages/AdharAuthentication";
+import AdharAuthentication from "./pages/User/AdharAuthentication";
 
 function AnimatedRoutes() {
   const location = useLocation();
