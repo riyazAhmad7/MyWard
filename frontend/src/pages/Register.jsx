@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function Register() {
@@ -13,6 +13,7 @@ function Register() {
 
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -94,19 +95,31 @@ function Register() {
       // Here you would typically make an API call to register the user
       console.log("Registration data:", formData);
 
+      // Redirect to Adhar Authentication with prefill data
+      navigate("/adhar-authentication", {
+        state: {
+          fullName: formData.fullName,
+          email: formData.email,
+          phoneNumber: formData.phoneNumber,
+        },
+        replace: true,
+      });
+
+      return;
+
       // Show success message or redirect
-      alert(
-        "Registration successful! Please check your email for verification."
-      );
+      // alert(
+      //   "Registration successful! Please check your email for verification."
+      // );
 
       // Reset form
-      setFormData({
-        fullName: "",
-        email: "",
-        phoneNumber: "",
-        password: "",
-        confirmPassword: "",
-      });
+      // setFormData({
+      //   fullName: "",
+      //   email: "",
+      //   phoneNumber: "",
+      //   password: "",
+      //   confirmPassword: "",
+      // });
     } catch (error) {
       console.error("Registration error:", error);
       alert("Registration failed. Please try again.");

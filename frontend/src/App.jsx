@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import PageWrapper from "./components/PageWrapper";
+import AdharAuthentication from "./pages/AdharAuthentication";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -48,6 +49,14 @@ function AnimatedRoutes() {
           element={
             <PageWrapper>
               <Dashboard />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/adhar-authentication"
+          element={
+            <PageWrapper>
+              <AdharAuthentication />
             </PageWrapper>
           }
         />
