@@ -280,7 +280,7 @@ export default function AdharAuthentication() {
             className="text-4xl sm:text-5xl font-extrabold tracking-tight"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#328E6E] to-[#67AE6E]">
-              Get Aadhaar Verified
+              Get Yourself Adhar Authenticated
             </span>
           </motion.h1>
           <motion.p
@@ -293,7 +293,7 @@ export default function AdharAuthentication() {
             }}
             className="mt-3 text-base sm:text-lg text-gray-600"
           >
-            Verify your identity to view and post issues in MyWard.
+            Verify your identity to view and post issues from Your Ward.
           </motion.p>
           <motion.div
             initial={{ scaleX: 0 }}
