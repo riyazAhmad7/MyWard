@@ -1,23 +1,22 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
+
+const { Schema } = mongoose;
 
 const CommentSchema = new Schema(
   {
-    problemId: { type: Schema.Types.ObjectId, ref: "Problem", required: true },
-    commentedBy: {
+    problemId: {
       type: Schema.Types.ObjectId,
-      refPath: "commentedByModel",
+      ref: "Problem",
       required: true,
+      index: true,
     },
-    commentedByModel: {
-      type: String,
-      enum: ["User", "Authority"],
-      required: true,
-    },
-    text: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now },
+    commentedBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    text: { type: String, required: true, trim: true },
     replies: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   },
-  { timestamps: false }
+  { timestamps: true }
 );
 
-export default mongoose.model("Comment", CommentSchema);
+const Comment =
+  mongoose.models.Comment || mongoose.model("Comment", CommentSchema);
+export default Comment;

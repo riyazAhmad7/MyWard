@@ -1,17 +1,22 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
+
+const { Schema } = mongoose;
 
 const ActionLogSchema = new Schema(
   {
-    problemId: { type: Schema.Types.ObjectId, ref: "Problem", required: true },
-    updatedBy: {
+    problemId: {
       type: Schema.Types.ObjectId,
-      ref: "Authority",
+      ref: "Problem",
       required: true,
+      index: true,
     },
-    actionDescription: { type: String, required: true },
+    updatedBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    actionDescription: { type: String, required: true, trim: true },
     timestamp: { type: Date, default: Date.now },
   },
-  { timestamps: false }
+  { timestamps: true }
 );
 
-export default mongoose.model("ActionLog", ActionLogSchema);
+const ActionLog =
+  mongoose.models.ActionLog || mongoose.model("ActionLog", ActionLogSchema);
+export default ActionLog;
